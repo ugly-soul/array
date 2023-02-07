@@ -90,4 +90,43 @@ extension L on List {
 
     return res;
   }
+
+  /// 
+  /// One can like JavaScript without reduce
+  /// 
+  /// ```dart
+  /// var res = list.reducex((returnValue, currentValue, index, sourceList) {
+  ///   returnValue.add({
+  ///     'currentKey': currentValue['name']
+  ///   });
+  ///   return returnValue;
+  /// }, []);
+  /// 
+  /// print(res);  // [{name: 123, age: 0}]
+  /// ```
+  reducex(Function callback, [defaultValue]) {
+
+    List o = this;
+
+    int len = o.length >>> 0;
+
+    int k = 0;
+    var value;
+
+    if (defaultValue != null) {
+      value = defaultValue;
+    } else {
+      value = o[k];
+    }
+
+    while (k < len) {
+      if (k < o.length) {
+        value = callback(value, o[k], k, o);
+      }
+
+      k++;
+    }
+
+    return value;
+  }
 }

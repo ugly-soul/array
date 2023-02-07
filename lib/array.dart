@@ -95,6 +95,8 @@ extension L on List {
   /// One can like JavaScript without reduce
   /// 
   /// ```dart
+  /// List list = [{ 'name': 123, 'age': 0 }, { 'name': 124, 'age': 1 }];
+  /// 
   /// var res = list.reducex((returnValue, currentValue, index, sourceList) {
   ///   returnValue.add({
   ///     'currentKey': currentValue['name']
@@ -102,7 +104,7 @@ extension L on List {
   ///   return returnValue;
   /// }, []);
   /// 
-  /// print(res);  // [{name: 123, age: 0}]
+  /// print(res);  // [{currentKey: 123}, {currentKey: 124}]
   /// ```
   reducex(Function callback, [defaultValue]) {
 

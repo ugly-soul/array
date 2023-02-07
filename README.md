@@ -9,7 +9,7 @@
     array: ^0.0.1
 ```
 
-## 一个简单的示例 (flat)
+## List.flat
 ```javascript
   import 'package:array/array.dart';
 
@@ -23,7 +23,7 @@
 
 ```
 
-## 一个简单的示例 (flatMap)
+## List.flatMap
 ```javascript
   import 'package:array/array.dart';
 
@@ -39,7 +39,7 @@
 
 ```
 
-## 一个简单的示例 (filter)
+## List.filter
 ```javascript
   import 'package:array/array.dart';
 
@@ -50,5 +50,22 @@
   });
   
   print(res);  // [{name: 123, age: 0}]
+
+```
+
+## List.reducex
+```javascript
+  import 'package:array/array.dart';
+
+  // 数组过滤，和js一样
+  List list = [{ 'name': 123, 'age': 0 }, { 'name': 124, 'age': 1 }];
+  var res = list.reducex((returnValue, currentValue, index, sourceList) {
+    returnValue.add({
+      'currentKey': currentValue['name']
+    });
+    return returnValue;
+  }, []);
+  
+  print(res);  // [{currentKey: 123}, {currentKey: 124}]
 
 ```

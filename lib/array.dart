@@ -1,5 +1,12 @@
 library array;
 
+// extension F on Object {
+//   int operator >>>(int n) {
+//     var temParse = double.tryParse(toString());
+//     int temp = temParse is int || temParse is double ? (temParse!.toInt() >>> n) : 0;
+//     return temp;
+//   }
+// }
 extension L on List {
 
   /// 
@@ -130,5 +137,44 @@ extension L on List {
     }
 
     return value;
+  }
+  /// 
+  /// Returns a new list
+  /// 
+  /// ```dart
+  /// List list1 = ['foo', 'bar', 'baz', 'qux'];
+  /// List list2 = ['foo', 'qux'];
+  /// 
+  /// print(list1 - list2);  // bar, baz
+  /// ```
+  List operator -(List arr) {
+    return where((element) => !arr.contains(element)).toList();
+  }
+
+  /// 
+  /// Returns a new list
+  /// 
+  /// ```dart
+  /// List list = [0];
+  /// List list1 = [{ 'name': 444, 'age': 0 }, { 'name': 124, 'age': 1 }];
+  /// 
+  /// print(list + list1);  // [0, {name: 444, age: 0}, {name: 124, age: 1}]
+  /// ```
+  List operator +(List arr) {
+    addAll(arr);
+    return arr;
+  }
+
+  /// 
+  /// Returns a new list
+  /// 
+  /// ```dart
+  /// List list = List list = [1,null, 2, '12.3'];
+  /// 
+  /// print(list * 3);  // [3.0, 0.0, 6.0, 36.900000000000006]
+  /// ```
+  List operator *(double number) {
+    // return map((item) => (item >>> 0) * number).toList();
+    return map((item) => (double.tryParse(item.toString()) ?? 0) * number).toList();
   }
 }

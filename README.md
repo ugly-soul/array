@@ -57,7 +57,6 @@
 ```javascript
   import 'package:array/array.dart';
 
-  // 数组过滤，和js一样
   List list = [{ 'name': 123, 'age': 0 }, { 'name': 124, 'age': 1 }];
   var res = list.reducex((returnValue, currentValue, index, sourceList) {
     returnValue.add({
@@ -67,5 +66,39 @@
   }, []);
   
   print(res);  // [{currentKey: 123}, {currentKey: 124}]
+
+```
+
+
+## operator " - "
+```javascript
+  import 'package:array/array.dart';
+
+  List list1 = ['foo', 'bar', 'baz', 'qux'];
+  List list2 = ['foo', 'qux'];
+  
+  print(list1 - list2);  // bar, baz
+
+```
+
+## operator " + "
+```javascript
+  import 'package:array/array.dart';
+
+  List list = [0];
+  List list1 = [{ 'name': 444, 'age': 0 }, { 'name': 124, 'age': 1 }];
+  
+  print(list + list1);  // [0, {name: 444, age: 0}, {name: 124, age: 1}]
+
+```
+
+## operator " * "
+```javascript
+  import 'package:array/array.dart';
+
+  List list = List list = [1,null, 2, '12.3'];
+  
+  print(list * 3);  // [3.0, 0.0, 6.0, 36.900000000000006]
+  
 
 ```

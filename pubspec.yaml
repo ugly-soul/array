@@ -1,6 +1,6 @@
 name: array
 description: 用于flutter使用的数组拓展方法 (List extension function)
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/ugly-soul/array
 
 environment:
